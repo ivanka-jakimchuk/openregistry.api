@@ -1,25 +1,15 @@
 Overview
 ========
 
-openprocurement.auctions.dgf contains documentaion for Deposit Guarantee Fund auctions.
-
-There are two procedures:
- 
- * dgfOtherAssets - sale of the insolvent bank property.
- 
- * dgfFinancialAssets - sale of the creditor claim right.
-
+openregistry.assets.basic contains the description of the Registry Data Base.
 
 Features
 --------
 
-* No need to specify enquiries period (there is no *active.enquiries* status), since it overlaps with *active.tendering* period.
-* Procedure can be switched from *draft* status to *active.tendering*.
-* During *active.tendering* period participants can ask questions, submit proposals, and upload documents.
-* The only date Organizer has to provide is *Tender.auctionPeriod.startDate*, the rest will be calculated automatically.
-* Organizer can't edit procedure's significant properties (*Auction.value*, etc.).
-* There is obligatory participant qualification (*Bid.selfQualified*) via guarantee payment.
-* The only currency (*Value.currency*) for this procedure is hryvnia (UAH).
+* Basic asset is a representation of an item.
+* Procedure can be switched from *draft* status to *pending*.
+* Basic assets are combined in lot, being marked as attached to that lot.
+* The only currency (*Value.currency*) to be used is hryvnia (UAH).
 
 Conventions
 -----------
@@ -32,8 +22,7 @@ and responses.
 All API POST and PUT requests expect a top-level object with a single
 element in it named `data`.  Successful responses will mirror this format. 
 The data element should itself be an object, containing the parameters for
-the request.  In the case of creating a new auction, these are the fields we
-want to set on the auction itself.
+the request.
 
 If the request was successful, we will get a response code of `201`
 indicating the object was created.  That response will have a data field at
@@ -45,19 +34,18 @@ code and the JSON returned will have an `errors` field at the top level
 containing a list of problems.  We look at the first one and print out its
 message.
 
-Main responsibilities
 ---------------------
 
 Project status
 --------------
 
-The project has beta status.
+The project has pre alpha status.
 
-The source repository for this project is on GitHub: https://github.com/openprocurement/openprocurement.auctions.dgf
+The source repository for this project is on GitHub: 
+https://github.com/openprocurement/openregistry.api
 
 You can leave feedback by raising a new issue on the `issue tracker
-<https://github.com/openprocurement/openprocurement.auctions.dgf/issues>`_ (GitHub
-registration necessary).  
+<>`_ (GitHub registration necessary).  
 
 Documentation of related packages
 ---------------------------------
@@ -69,14 +57,6 @@ API stability
 
 API is relatively stable. The changes in the API are communicated via `Open Procurement API
 <https://groups.google.com/group/open-procurement-api>`_ maillist.
-
-Change log
-----------
-
-0.1
-~~~
-
-Released: not released
 
 
 Next steps
